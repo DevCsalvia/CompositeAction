@@ -1,0 +1,33 @@
+name: "Composite action for gatsby-static-website, Deploy to surge"
+description: "Udemy lesson 47, Learn GitLab CI / CD with Docker & DevOps: obtain valuable DevOps skills. Build pipelines."
+
+inputs:
+  should_execute:
+    description: "Should execute action"
+    required: true
+  domain:
+    description: "Domain to deploy on"
+    required: true
+  image_name:
+    description: "Name of the image to push"
+    required: true
+  tag: 
+    description: "How to tag the image. Default: latest"    
+
+runs:
+  using: "composite"
+  container: node:16
+  runs-on: ubuntu-latest
+  if: ${{ inputs.should_execute }}
+  steps:
+    - name: Download public folder
+      uses: actions/download-artifact@v3
+      with:
+        name: public
+    - name: Deploy to ${{ inputs.DOMAIN }}
+      uses: dswistowski/surge-sh-action@v1
+      with:
+        domain: ${{ inputs.DOMAIN }}
+        project: '.'
+        login: ${{secrets.surge_login}}
+        token: ${{secrets.surge_token}}
