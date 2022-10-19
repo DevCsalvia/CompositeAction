@@ -11,6 +11,12 @@ inputs:
   image_name:
     description: "Name of the image to push"
     required: true
+  surge_login:
+    description: "Surge login"
+    required: true
+  surge_password:
+    description: "Surge password"
+    required: true
   tag: 
     description: "How to tag the image. Default: latest"    
 
@@ -29,5 +35,5 @@ runs:
       with:
         domain: ${{ inputs.DOMAIN }}
         project: '.'
-        login: ${{secrets.surge_login}}
-        token: ${{secrets.surge_token}}
+        login: ${{inputs.surge_login}}
+        token: ${{inputs.surge_token}}
