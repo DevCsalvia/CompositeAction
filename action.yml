@@ -22,8 +22,6 @@ inputs:
 
 runs:
   using: "composite"
-  container: node:16
-  runs-on: ubuntu-latest
   if: ${{ inputs.should_execute }}
   steps:
     - name: Download public folder
