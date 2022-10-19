@@ -14,8 +14,8 @@ inputs:
   surge_login:
     description: "Surge login"
     required: true
-  surge_password:
-    description: "Surge password"
+  surge_token:
+    description: "Surge token"
     required: true
   tag: 
     description: "How to tag the image. Default: latest"    
