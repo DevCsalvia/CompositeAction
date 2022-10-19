@@ -22,7 +22,7 @@ inputs:
 
 runs:
   using: "composite"
-  if: ${{ inputs.should_execute }}
+  if: ${{ inputs.should_execute == 'true' }}
   steps:
     - name: Download public folder
       uses: actions/download-artifact@v3
