@@ -2,9 +2,6 @@ name: "Composite action for gatsby-static-website, Deploy to surge"
 description: "Udemy lesson 47, Learn GitLab CI / CD with Docker & DevOps: obtain valuable DevOps skills. Build pipelines."
 
 inputs:
-  should_execute:
-    description: "Should execute action"
-    required: true
   domain:
     description: "Domain to deploy on"
     required: true
@@ -22,7 +19,6 @@ inputs:
 
 runs:
   using: "composite"
-  if: ${{ inputs.should_execute }} == 'true' 
   steps:
     - name: Download public folder
       uses: actions/download-artifact@v3
